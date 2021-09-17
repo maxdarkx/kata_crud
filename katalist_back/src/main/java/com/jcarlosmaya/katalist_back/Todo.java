@@ -1,11 +1,9 @@
 package com.jcarlosmaya.katalist_back;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "todo")
 public class Todo {
 
     @Id

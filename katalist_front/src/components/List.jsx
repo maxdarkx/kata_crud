@@ -55,8 +55,8 @@ const List = () => {
     };
 
     return  <div>
-                <table >
-                    <thead>
+                <table class="table table-striped">
+                    <thead className="thead-dark">
                     <tr>
                         <td>ID</td>
                         <td>Tarea</td>
@@ -64,16 +64,16 @@ const List = () => {
                     </tr>
                     </thead>
                     <tbody>
-                    {currentList.map((todo) => {
-                        return <tr key={todo.id} style={todo.completed ? decorationDone : {}}>
-                        <td>{todo.id}</td>
-                        <td>{todo.name}</td>
-                        <td><input type="checkbox" defaultChecked={todo.completed} onChange={(event) => onChange(event, todo)}></input></td>
+                        {currentList.map((todo) => {
+                            return <tr key={todo.id} style={todo.completed ? decorationDone : {}}>
+                            <td>{todo.id}</td>
+                            <td>{todo.name}</td>
+                            <td><input type="checkbox" defaultChecked={todo.completed} onChange={(event) => onChange(event, todo)}></input></td>
 
-                        <td><button onClick={() => onDelete(todo.id)} className="btn btn-danger">Eliminar</button></td>
-                        <td><button onClick={() => onEdit(todo)} className="btn btn-success">Editar</button></td>
-                        </tr>
-                    })}
+                            <td><button onClick={() => onDelete(todo.id)} className="btn btn-danger">Eliminar</button></td>
+                            <td><button onClick={() => onEdit(todo)} className="btn btn-success">Editar</button></td>
+                            </tr>
+                        })}
                     </tbody>
                 </table>
             </div>
