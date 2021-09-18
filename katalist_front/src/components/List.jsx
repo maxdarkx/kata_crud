@@ -1,5 +1,5 @@
-import { Store } from "../Store";
-import HOST_API from "../HOST_API";
+import Store from "./Store";
+import HOST_API from "./HOST_API";
 import React, { useContext, useEffect} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 

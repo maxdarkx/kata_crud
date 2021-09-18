@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Store } from "../Store";
-import HOST_API from "../HOST_API";
+import { Store } from "./Store";
+import HOST_API from "./HOST_API";
 import { useContext, useRef, useState } from 'react';
 import { useForm } from "react-hook-form";
 

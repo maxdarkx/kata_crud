@@ -1,20 +1,19 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Store } from "../Store";
-import HOST_API from "../HOST_API";
+import Store from "./Store";
 import { useContext, useRef, useState } from 'react';
-import { useForm } from "react-hook-form";
-import { Form } from './todocomponents/Form';
-import List from './todoComponents/List';
+//import { useForm } from "react-hook-form";
+import HOST_API from "./HOST_API";
 
 
-const FormCategories = () => {
+
+const FormCategorias = () => {
     
 
     const formRef = useRef(null);
     const { dispatch, state: { todo } } = useContext(Store);
     const item = todo.item;
     const [state, setState] = useState(item);
-    const {register, errors, handleSubmit} = useForm();
+    //const {register, errors, handleSubmit} = useForm();
 
     const onAdd = (event) => {
         event.preventDefault();
@@ -33,7 +32,7 @@ const FormCategories = () => {
             }
         })
         .then(response => response.json())
-        .then((todo) => {
+        .then((categoria) => {
             dispatch({ type: "add-categoria", item: categoria });
             setState({ name: "" });
             formRef.current.reset();
@@ -48,7 +47,6 @@ const FormCategories = () => {
         <input
             type="text"
             name="name"
-            //ref={register=(required)}
             placeholder="¿Qué piensas hacer hoy?"
             defaultValue={item.name}
             className="form-control"
@@ -61,9 +59,4 @@ const FormCategories = () => {
 
     </form>)
 }
-
-
-
-  {/*generar los dip de las listas vacias
-traer todass las filtrar
-encontrar para filtrar por categoria*/}
+export default FormCategorias;

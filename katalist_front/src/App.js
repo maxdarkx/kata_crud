@@ -1,7 +1,8 @@
-import React, { Children, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import StoreProvider from './components/StoreProvider';
-import Form from './components/todoComponents/Form';
-import List from './components/todoComponents/List';
+import FormCategorias from './components/FormCategorias';
+import ListCategorias from './components/ListCategorias';
+
 
 const TodoList = (props) =>
 {
@@ -11,18 +12,16 @@ const TodoList = (props) =>
               <div className="containter input-group mb-3">
                 <table>
                   <tr>
-                    <th><Form/></th>
+                    <th><FormCategorias/></th>
                   </tr>
                   <tr>
-                    <th><List/></th>
+                    <th><ListCategorias/></th>
                   </tr>
                 </table>
               </div>
             </StoreProvider>)
             
 }
-
-
 
 function App() {
   

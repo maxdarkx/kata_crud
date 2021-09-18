@@ -30,10 +30,26 @@ function reducer(state, action) {
         });
         todoUpDelete.list = listUpdate;
         return { ...state, todo: todoUpDelete }
+
       case 'update-list':
           const todoUpList = state.todo;
           todoUpList.list = action.list;
           return { ...state, todo: todoUpList }
+    
+//cases para categorias
+      case 'add-categoria':
+            const categoriaListAdd = state.categoria.list;
+            categoriaListAdd.push(action.item);
+            return{...state, categoriaList:{list: categoriaListAdd}};
+
+      case 'delete-categoria':
+          const categoriaListDelete = state.categoria;
+          const categoriaListIsUpdate = categoriaListDelete.list.filter((item) => {
+              return item.id!==action.id;
+          });
+          categoriaListDelete.list = categoriaListIsUpdate;
+          return { ...state, categoria: categoriaListDelete }
+
       default:
         return state;
     }

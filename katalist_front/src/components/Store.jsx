@@ -1,6 +1,7 @@
-import { createContext } from 'react';
+import initialState from "./initialState";
+import { createContext } from "react";
 
-export const initialState = {   todo:         { list: [], item: {} },
-                                mainCategory: { list: [], item: {} }};
 
-export const Store = createContext(initialState);
+const Store = createContext(initialState);
+
+export default Store;
