@@ -1,23 +1,24 @@
 import Store from './Store';
-import React, { useContext, useEffect} from 'react';
+import { useContext, useEffect} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import FormCategorias from './FormCategorias';
-import List from './List';
 import HOST_API from "./HOST_API";
+//import FormCategorias from './FormCategorias';
+import Form from './Form';
+import List from './List';
 
-const ListCategorias = () => {
+export const ListCategorias = () => {
     const { dispatch, state: { categoria } } = useContext(Store);
-    const currentCategoria = categoria.List;
+    const currentCategoria = categoria.list;
   
     useEffect(() => {
         fetch(HOST_API + "/categoria")
             .then(response => response.json())
-            .then((categoria) => {
-                dispatch({ type: "add-categoria", categoria })
+            .then((list) => {
+                dispatch({ type: "add-categoria", list })
             })
     }, [dispatch]);
 
-const onDelete = (id) => {
+    const onDelete = (id) => {
         fetch(HOST_API + "/categoria/"+id, {
             method: "DELETE"
             }).then((categoria) => {
@@ -28,21 +29,25 @@ const onDelete = (id) => {
     /*const onEdit = (categoria) => {
         dispatch({ type: "edit-categoria", item: categoria })
     };*/
- 
-    return  (<div>
-        {currentCategoria.map((item) =>{
-            return(
+    console.log("hola soy una categoria:"+currentCategoria)
+    return(
+        
+        currentCategoria.map((item) =>{
+            
+            return( 
                 <div key={item.id}>
                         <div>
                             <span >Nombre de la categoria</span>
                             <input disabled = {true} value={item.name}/>
+                            
                             <button onClick = {() => onDelete(item.id)}>Eliminar</button>
                         </div>
-                        <FormCategorias categoriaId = {item.id}/>
-                        <List Categoria = {item.id}/>
+                        
+                        <Form categoriaId = {item.id}/>
+                        <List categoriaId = {item.id}/>
                 </div>    
-                        )})}
-            </div>)     
+            )})
+          
+    )
+    
 }
-
-export default ListCategorias;

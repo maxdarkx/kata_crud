@@ -10,6 +10,7 @@ public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true,nullable = false)
     private Long id;
 
     private String name;
@@ -34,11 +35,12 @@ public class Categoria {
         this.name = name;
     }
 
-    public Set<Todo> categoriaId() {
+    public Set<Todo> getCategoriaId() {
         return categoriaId;
     }
 
-    public void setTodos1(Set<Todo> categoriaId) {
+    public void setCategoriaId(Set<Todo> categoriaId) {
         this.categoriaId = categoriaId;
     }
 }
+

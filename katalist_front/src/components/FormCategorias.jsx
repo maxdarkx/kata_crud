@@ -6,7 +6,7 @@ import HOST_API from "./HOST_API";
 
 
 
-const FormCategorias = () => {
+const FormCategorias = ({categoriaId}) => {
     
 
     const formRef = useRef(null);

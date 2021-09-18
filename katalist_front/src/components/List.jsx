@@ -3,9 +3,9 @@ import HOST_API from "./HOST_API";
 import React, { useContext, useEffect} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const List = () => {
+const List = ({categoriaId}) => {
     const { dispatch, state: { todo } } = useContext(Store);
-    const currentList = todo.list;
+    const currentList = todo.list.filter(todo => {return todo.groupListId === categoriaId});
   
     useEffect(() => {
         fetch(HOST_API + "/todos")
@@ -20,7 +20,8 @@ const List = () => {
         const request = {
             name: todo.name,
             id: todo.id,
-            completed: event.target.checked
+            completed: event.target.checked,
+            groupListId: categoriaId
         };
         
         fetch(HOST_API + "/todo", {
@@ -55,6 +56,7 @@ const List = () => {
     };
 
     return  <div>
+                {console.log("soy un todo: "+todo)}
                 <table class="table table-striped">
                     <thead className="thead-dark">
                     <tr>
@@ -64,6 +66,7 @@ const List = () => {
                     </tr>
                     </thead>
                     <tbody>
+                        {console.log("soy un todo: "+currentList)}
                         {currentList.map((todo) => {
                             return <tr key={todo.id} style={todo.completed ? decorationDone : {}}>
                             <td>{todo.id}</td>
