@@ -3,6 +3,8 @@ import { Store } from "../Store";
 import HOST_API from "../HOST_API";
 import { useContext, useRef, useState } from 'react';
 import { useForm } from "react-hook-form";
+import { Form } from './todocomponents/Form';
+import List from './todoComponents/List';
 
 
 const FormCategories = () => {
@@ -14,45 +16,16 @@ const FormCategories = () => {
     const [state, setState] = useState(item);
     const {register, errors, handleSubmit} = useForm();
 
-
-
-    const onEdit = (event) => {
-        event.preventDefault();
-  
-        const request = {
-            name: state.name,
-            id: item.id,
-            isCompleted: item.isCompleted
-        };
-  
-  
-        fetch(HOST_API + "/todo", {
-            method: "PUT",
-            body: JSON.stringify(request),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then((todo) => {
-            dispatch({ type: "update-item", item: todo });
-            setState({ name: "" });
-            formRef.current.reset();
-        });
-    }
-
-
     const onAdd = (event) => {
         event.preventDefault();
   
         const request = {
-            name: state.name,
+            nameCategoria: state.nameCategoria,
             id: null,
-            completed: false
         };
   
   
-        fetch(HOST_API + "/todo", {
+        fetch(HOST_API + "/categoria", {
         method: "POST",
         body: JSON.stringify(request),
         headers: {
@@ -61,7 +34,7 @@ const FormCategories = () => {
         })
         .then(response => response.json())
         .then((todo) => {
-            dispatch({ type: "add-item", item: todo });
+            dispatch({ type: "add-categoria", item: categoria });
             setState({ name: "" });
             formRef.current.reset();
         });
@@ -69,7 +42,9 @@ const FormCategories = () => {
   
     
   
-    return <form ref={formRef}>
+    return (
+        <form ref={formRef} className="form">
+    
         <input
             type="text"
             name="name"
@@ -82,11 +57,9 @@ const FormCategories = () => {
             }}  
             >
         </input>
-        {item.id && <button onClick={onEdit} className="btn btn-success">Actualizar</button>}
-        {<span className= "text-danger text-small d-block mb-2" >{errors?.titulo?.message}</span>}
-        {!item.id && <button onClick={onAdd} className="btn btn-success">Crear</button>}
+        {!item.id && <button onClick={onAdd} className="btn btn-success">Crear nueva lista</button>}
 
-    </form>
+    </form>)
 }
 
 
