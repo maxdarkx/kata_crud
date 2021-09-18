@@ -1,6 +1,6 @@
-package com.jcarlosmaya.katalist_back;
+package com.jcarlosmaya.katalist_back.interfaz;
 
-import java.util.List;
+import com.jcarlosmaya.katalist_back.entidades.Todo;
 
 public interface interfaceServiciosTodo {
     Iterable<Todo> get();

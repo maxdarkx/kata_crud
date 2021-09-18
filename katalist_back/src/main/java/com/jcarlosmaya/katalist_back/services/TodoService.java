@@ -1,13 +1,15 @@
-package com.jcarlosmaya.katalist_back;
+package com.jcarlosmaya.katalist_back.services;
 
+import com.jcarlosmaya.katalist_back.entidades.Todo;
+import com.jcarlosmaya.katalist_back.repository.TodoRepository;
+import com.jcarlosmaya.katalist_back.interfaz.interfaceServiciosTodo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
-public class TodoService implements interfaceServiciosTodo{
+public class TodoService implements interfaceServiciosTodo {
     @Autowired
     private TodoRepository repository;
 

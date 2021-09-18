@@ -1,5 +1,7 @@
-package com.jcarlosmaya.katalist_back;
+package com.jcarlosmaya.katalist_back.controller;
 
+import com.jcarlosmaya.katalist_back.entidades.Todo;
+import com.jcarlosmaya.katalist_back.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,5 +1,6 @@
-package com.jcarlosmaya.katalist_back;
+package com.jcarlosmaya.katalist_back.repository;
 
+import com.jcarlosmaya.katalist_back.entidades.Todo;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

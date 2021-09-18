@@ -1,15 +1,18 @@
-package com.jcarlosmaya.katalist_back;
+package com.jcarlosmaya.katalist_back.entidades;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "todo")
+
 public class Todo {
 
     @Id
     @GeneratedValue
     private Long id;
+    private Long categoriaId;
     private String name;
+
     private boolean isCompleted;
 
     public Long getId() {
