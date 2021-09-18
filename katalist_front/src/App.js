@@ -1,17 +1,34 @@
-import React from 'react';
+import React, { Children, Fragment } from 'react';
 import StoreProvider from './components/StoreProvider';
-import { Form } from './components/Form';
-import List from './components/List';
+import Form from './components/todoComponents/Form';
+import List from './components/todoComponents/List';
+
+const TodoList = (props) =>
+{
+  return(  
+            <StoreProvider>
+            <h1>Categorias{props.name}</h1>
+              <div className="containter input-group mb-3">
+                <table>
+                  <tr>
+                    <th><Form/></th>
+                  </tr>
+                  <tr>
+                    <th><List/></th>
+                  </tr>
+                </table>
+              </div>
+            </StoreProvider>)
+            
+}
+
 
 
 function App() {
-  return <StoreProvider>
-    <h3>To-Do List</h3>
-    <div class="input-group mb-3">
-      <Form />
-    </div>
-    <List />
-  </StoreProvider>
+  
+  return(  <>
+            <TodoList />
+          </>)
 }
 
 export default App;
