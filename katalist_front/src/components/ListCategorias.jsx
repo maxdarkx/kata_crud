@@ -11,10 +11,10 @@ export const ListCategorias = () => {
     const currentCategoria = categoria.list;
   
     useEffect(() => {
-        fetch(HOST_API + "/categoria")
+        fetch(HOST_API + "/categorias")
             .then(response => response.json())
             .then((list) => {
-                dispatch({ type: "add-categoria", list })
+                dispatch({ type: "categoria", list })
             })
     }, [dispatch]);
 
@@ -37,14 +37,15 @@ export const ListCategorias = () => {
             return( 
                 <div key={item.id}>
                         <div>
-                            <span >Nombre de la categoria</span>
+                            {/*<span >Que quieres hacer hoy?</span>*/}
                             <input disabled = {true} value={item.name}/>
                             
-                            <button onClick = {() => onDelete(item.id)}>Eliminar</button>
+                            <button onClick = {() => onDelete(item.id)}>Eliminar Categoria</button>
                         </div>
                         
-                        <Form categoriaId = {item.id}/>
+                        
                         <List categoriaId = {item.id}/>
+                        <Form categoriaId = {item.id}/>
                 </div>    
             )})
           

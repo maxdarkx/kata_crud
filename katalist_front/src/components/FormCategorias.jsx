@@ -19,21 +19,19 @@ const FormCategorias = ({categoriaId}) => {
         event.preventDefault();
   
         const request = {
-            nameCategoria: state.nameCategoria,
+            name: state.nameCategoria,
             id: null,
         };
   
-  
+        console.log("request:"+request)
         fetch(HOST_API + "/categoria", {
-        method: "POST",
-        body: JSON.stringify(request),
-        headers: {
-                'Content-Type': 'application/json'
-            }
+            method: "POST",
+            body: JSON.stringify(request),
+            headers: {'Content-Type': 'application/json'}
         })
         .then(response => response.json())
         .then((categoria) => {
-            dispatch({ type: "add-categoria", item: categoria });
+            dispatch({ type: "save", item: categoria });
             setState({ name: "" });
             formRef.current.reset();
         });
@@ -47,7 +45,7 @@ const FormCategorias = ({categoriaId}) => {
         <input
             type="text"
             name="name"
-            placeholder="¿Qué piensas hacer hoy?"
+            placeholder="Nueva Categoria"
             defaultValue={item.name}
             className="form-control"
             onChange={(event) => {
@@ -55,7 +53,7 @@ const FormCategorias = ({categoriaId}) => {
             }}  
             >
         </input>
-        {!item.id && <button onClick={onAdd} className="btn btn-success">Crear nueva lista</button>}
+        {!item.id && <button onClick={onAdd} className="btn btn-success">Crear nueva categoria</button>}
 
     </form>)
 }

@@ -60,9 +60,9 @@ const List = ({categoriaId}) => {
                 <table class="table table-striped">
                     <thead className="thead-dark">
                     <tr>
-                        <td>ID</td>
-                        <td>Tarea</td>
-                        <td>¿Completado?</td>
+                        <th>ID</th>
+                        <th>Tarea</th>
+                        <th>¿Completado?</th>
                     </tr>
                     </thead>
                     <tbody>
